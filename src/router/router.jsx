@@ -6,6 +6,7 @@ import Register from "../Pages/Auth/Register";
 import DashBoardLayout from "../Layout/MainLayout/DashBoardLayout";
 import AddBooks from "../Pages/DashBoard/AddBooks/AddBooks";
 import PrivateRoute from "./PrivateRoute";
+import CovarageArea from "../Pages/Home/HomePage/CovarageArea/CovarageArea";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,12 @@ export const router = createBrowserRouter([
     {
       path:'register',
       Component:Register
+    },
+    {
+      path:'covarage',
+      element:<CovarageArea></CovarageArea>,
+       loader:()=>fetch('/coverage.json').then(res=>res.json())
+
     }
     
   ]
