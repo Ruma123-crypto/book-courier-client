@@ -1,6 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router";
 
 const BookCard = ({ book }) => {
+  const navigate = useNavigate();
+ 
+
   return (
     <div className="card bg-base-200 shadow-md hover:shadow-xl transition">
       
@@ -23,7 +27,10 @@ const BookCard = ({ book }) => {
         </p>
 
         <div className="card-actions justify-end">
-          <button className="btn btn-primary btn-sm">
+           <button
+            onClick={() => navigate(`/view-details/${book._id}`)}
+            className="btn btn-primary btn-sm"
+          >
             View Details
           </button>
         </div>

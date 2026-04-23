@@ -39,7 +39,6 @@ const AddBooks = () => {
       </h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-
         {/* Book Name */}
         <div>
           <label className="label">Book Name</label>
@@ -84,6 +83,16 @@ const AddBooks = () => {
           />
         </div>
 
+        <div>
+          {/* description */}
+          <label className="label">Description</label>
+          <textarea
+            {...register("description", { required: true })}
+            className="textarea textarea-bordered w-full"
+            placeholder="Book Description"
+          ></textarea>
+        </div>
+
         {/* Status */}
         <div>
           <label className="label">Status</label>
@@ -97,9 +106,7 @@ const AddBooks = () => {
         </div>
 
         {/* Submit */}
-        <button className="btn btn-primary w-full">
-          Add Book
-        </button>
+        <button className="btn btn-primary w-full">Add Book</button>
       </form>
     </div>
   );

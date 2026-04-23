@@ -10,11 +10,9 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/books">Books</NavLink>
+        <NavLink to="/all-books"> All Books</NavLink>
       </li>
-      <li>
-        <NavLink to="/books"> Add Books</NavLink>
-      </li>
+       
         </>
           const {user, logOut}=useContext(AuthContext)
         
