@@ -1,9 +1,10 @@
 import React from 'react';
+import { IoBookSharp } from 'react-icons/io5';
 
 const Logo = () => {
     return (
-        <div className='flex items-center'>
-            <img className='max-w-[80px] h-[50px] rounded' src='https://i.ibb.co.com/M5fdtP7f/hector-j-rivas-jvit-XXO6-Kd-M-unsplash.jpg' alt="" />
+        <div className='flex items-center gap-1 text-blue-600'>
+            <p ><IoBookSharp /></p>
             <p>BookCourier</p>
         </div>
     );

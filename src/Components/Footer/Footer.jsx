@@ -2,6 +2,8 @@
 import { FaFacebookF, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router";
+import Logo from "../Logo/Logo";
+import { IoBookSharp } from "react-icons/io5";
 
 const Footer = () => {
   return (
@@ -10,7 +12,7 @@ const Footer = () => {
 
         {/* 🔹 Brand */}
         <div>
-          <h2 className="text-2xl font-bold text-primary">📚 BookCourier</h2>
+          <h2 className="text-xl font-bold text-primary"><Logo></Logo></h2>
           <p className="mt-2 text-sm ">
             Delivering books from library to your home easily and fast.
           </p>
@@ -18,7 +20,7 @@ const Footer = () => {
 
         {/* 🔹 Quick Links */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
+          <h3 className="text-lg text-blue-600 font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2">
             <li><Link to="/" className="hover:text-primary">Home</Link></li>
             <li><Link to="/books" className="hover:text-primary">Books</Link></li>
@@ -29,7 +31,7 @@ const Footer = () => {
 
         {/* 🔹 Contact + Social */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">Contact</h3>
+          <h3 className="text-lg text-blue-600 font-semibold mb-3">Contact</h3>
           <p className="text-sm ">Email: support@bookcourier.com</p>
           <p className="text-sm ">Phone: +880 1234-567890</p>
 
