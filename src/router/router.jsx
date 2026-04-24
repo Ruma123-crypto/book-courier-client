@@ -22,6 +22,7 @@ import EditBook from "../Pages/LaybariyanDashBoard/EditBook/EditBook";
 import Orders from "../Pages/LaybariyanDashBoard/Orders/Orders";
 import AdminDashBoard from "../Pages/AdminDashBoard/AdminDashBoard";
 import AllUsers from "../Pages/AdminDashBoard/AllUser";
+import ManageUser from "../Pages/AdminDashBoard/ManageUser";
 
 export const router = createBrowserRouter([
   {
@@ -118,6 +119,10 @@ element:<PaymentCancel></PaymentCancel>
       {
         path:'all-users',
         element:<AllUsers></AllUsers>
+      },
+      {
+        path:'manage-users',
+        element:<ManageUser></ManageUser>
       }
     ]
   }
