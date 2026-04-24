@@ -2,13 +2,14 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 
 import Swal from "sweetalert2";
-import { AuthContext } from "../../../Context/AuthContext";
+import { AuthContext } from "../../Context/AuthContext";
 
-const MyProfile = () => {
+
+const AdminProfile = () => {
   const { user, updateUserProfile, setUser } = useContext(AuthContext);
   const { register, handleSubmit ,reset} = useForm();
 
-  const onSubmit = (data) => {
+ const onSubmit = (data) => {
   Swal.fire({
     title: "Are you sure?",
     text: "Do you want to update your profile?",
@@ -109,4 +110,4 @@ const MyProfile = () => {
 );
 };
 
-export default MyProfile;
+export default AdminProfile;

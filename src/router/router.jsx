@@ -23,6 +23,7 @@ import Orders from "../Pages/LaybariyanDashBoard/Orders/Orders";
 import AdminDashBoard from "../Pages/AdminDashBoard/AdminDashBoard";
 import AllUsers from "../Pages/AdminDashBoard/AllUser";
 import ManageUser from "../Pages/AdminDashBoard/ManageUser";
+import AdminProfile from "../Pages/AdminDashBoard/AdminProfile";
 
 export const router = createBrowserRouter([
   {
@@ -123,6 +124,10 @@ element:<PaymentCancel></PaymentCancel>
       {
         path:'manage-users',
         element:<ManageUser></ManageUser>
+      },
+      {
+        path:'admin-profile',
+        element:<AdminProfile></AdminProfile>
       }
     ]
   }

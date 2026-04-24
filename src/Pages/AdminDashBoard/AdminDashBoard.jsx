@@ -3,7 +3,7 @@ import { Link, NavLink, Outlet } from "react-router";
 import { MdOutlineLibraryBooks } from "react-icons/md";
 import { FaClipboardList, FaUser, FaUsers } from "react-icons/fa6";
 import { LuReceiptIndianRupee } from "react-icons/lu";
-import { FaUserFriends } from "react-icons/fa";
+import { FaUserCircle, FaUserFriends } from "react-icons/fa";
 
 const AdminDashBoard = () => {
   
@@ -99,6 +99,18 @@ const AdminDashBoard = () => {
                
 
                 <span className="is-drawer-close:hidden">All-Users</span>
+                
+              </NavLink>
+             
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="admin-profile"
+                to='/admindashBoard/admin-profile'
+              >
+                 <FaUserCircle className="text-xl" />
+               
+
+                <span className="is-drawer-close:hidden">Admin-profile</span>
                 
               </NavLink>
              
