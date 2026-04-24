@@ -20,6 +20,8 @@ import AddBooks from "../Pages/DashBoard/AddBooks/AddBooks";
 import MyBooks from "../Pages/LaybariyanDashBoard/MyBooks/MyBooks";
 import EditBook from "../Pages/LaybariyanDashBoard/EditBook/EditBook";
 import Orders from "../Pages/LaybariyanDashBoard/Orders/Orders";
+import AdminDashBoard from "../Pages/AdminDashBoard/AdminDashBoard";
+import AllUsers from "../Pages/AdminDashBoard/AllUser";
 
 export const router = createBrowserRouter([
   {
@@ -108,6 +110,16 @@ element:<PaymentCancel></PaymentCancel>
     ]
 
 
+  },
+  {
+    path:'admindashboard',
+    element:<PrivateRoute><AdminDashBoard></AdminDashBoard></PrivateRoute>,
+    children:[
+      {
+        path:'all-users',
+        element:<AllUsers></AllUsers>
+      }
+    ]
   }
 
 ]);

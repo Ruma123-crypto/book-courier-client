@@ -14,7 +14,12 @@ const Navbar = () => {
       </li>
        {
         user && <li>
-        <NavLink to="lbdashboard/add-books">Librarian</NavLink>
+        <NavLink to="lbdashboard">Librarian</NavLink>
+      </li>
+       }
+       {
+        user && <li>
+        <NavLink to="admindashboard">Admin</NavLink>
       </li>
        }
         </>

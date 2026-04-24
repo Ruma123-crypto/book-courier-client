@@ -3,8 +3,9 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import SocialLogin from './SocialLogin';
-// import useaxiosSecure from '../../hooks/useAxiosSecure';
-// import axios from 'axios';
+import axios from 'axios';
+import useaxiosSecure from '../../hooks/useAxiosSecure';
+
 
 
 const Register = () => {
@@ -16,7 +17,7 @@ const {
 
  const location=useLocation();
     const navigate=useNavigate()
-    // const axiosSecure=useaxiosSecure()
+    const axiosSecure=useaxiosSecure()
 const {registerUser,updateUserProfile}=useContext(AuthContext)
 
 
@@ -24,18 +25,20 @@ const {registerUser,updateUserProfile}=useContext(AuthContext)
   const handleRegister = (data) => {
     const profileImg = data.photo[0];
 
+    console.log(data.photo[0])
     registerUser(data.email, data.password)
         .then(res => {
             console.log(res.user);
-            navigate(location?.state || '/');
+           
 
             const formData = new FormData();
             formData.append('image', profileImg);
 
-            const img_API_URL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_imgId_Key}`;
+            const img_API_URL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_host}`;
 
             axios.post(img_API_URL, formData)
                 .then(res => {
+                    console.log('after uploaded',res.data.data.url)
                     const photoURL=res.data.data.url
                     const updateProfile = {
                         displayName: data.name,
@@ -45,10 +48,10 @@ const {registerUser,updateUserProfile}=useContext(AuthContext)
 
                     const userInfo = {
                             email: data.email,
-                            displayName: data.name,
+                             name: data.name,
                             photoURL: photoURL
                         }
-                        axiosSecure.post('/users', userInfo)
+                       axios.post('http://localhost:3000/users', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {
                                     console.log('user created in the database');
@@ -59,6 +62,7 @@ const {registerUser,updateUserProfile}=useContext(AuthContext)
                         .then(() => {
                             console.log("Profile Updated");
                         });
+                         navigate(location?.state || '/');
                 });
         })
         .catch(error => {
