@@ -4,7 +4,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import DashBoardLayout from "../Layout/MainLayout/DashBoardLayout";
-import AddBooks from "../Pages/DashBoard/AddBooks/AddBooks";
+
 import PrivateRoute from "./PrivateRoute";
 import CovarageArea from "../Pages/Home/HomePage/CovarageArea/CovarageArea";
 import AllBooks from "../Pages/AllBooks/AllBooks";
@@ -13,6 +13,13 @@ import MyOrders from "../Pages/DashBoard/MyOrders/MyOrders";
 import Payment from "../Pages/DashBoard/PaymentSuccess/PaymentSuccess";
 import PaymentSuccess from "../Pages/DashBoard/PaymentSuccess/PaymentSuccess";
 import MyProfile from "../Pages/DashBoard/MyProfiles/MyProfiles";
+import Invoices from "../Pages/DashBoard/Invoices/Invoices";
+import PaymentCancel from "../Pages/DashBoard/PaymentCancel/PaymentCancel";
+import LaybariyanDashBoard from "../Pages/LaybariyanDashBoard/LaybariyanDashBoard";
+import AddBooks from "../Pages/DashBoard/AddBooks/AddBooks";
+import MyBooks from "../Pages/LaybariyanDashBoard/MyBooks/MyBooks";
+import EditBook from "../Pages/LaybariyanDashBoard/EditBook/EditBook";
+import Orders from "../Pages/LaybariyanDashBoard/Orders/Orders";
 
 export const router = createBrowserRouter([
   {
@@ -54,10 +61,7 @@ export const router = createBrowserRouter([
   {
     path:'dashboard',
    element:<PrivateRoute><DashBoardLayout></DashBoardLayout></PrivateRoute>,
-   children:[{
-    path:'add-books',
-    element:<AddBooks></AddBooks>
-   },
+   children:[
    {
     path:'my-orders',
     element:<MyOrders></MyOrders>
@@ -67,10 +71,43 @@ export const router = createBrowserRouter([
  element:<PaymentSuccess></PaymentSuccess>
 },
 {
+path:'payment-cancel',
+element:<PaymentCancel></PaymentCancel>
+},
+{
   path:'my-profile',
   Component:MyProfile
+},
+{
+  path:'invoices',
+  Component:Invoices
 }
   ]
    
+  },
+  {
+    path:'lbdashboard',
+    element:<PrivateRoute><LaybariyanDashBoard></LaybariyanDashBoard></PrivateRoute>,
+    children:[
+     {
+    path:'add-books',
+    element:<AddBooks></AddBooks>
+   },
+    {
+    path:'my-books',
+    element:<MyBooks></MyBooks>
+    },
+    {
+      path:'edit-book/:id',
+      element:<EditBook></EditBook>
+    },
+    {
+      path:'orders',
+      element:<Orders></Orders>
+    }
+    ]
+
+
   }
+
 ]);

@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 
 const Navbar = () => {
-  
+  const {user, logOut}=useContext(AuthContext)
     const links=<>
      <li>
         <NavLink to="/">Home</NavLink>
@@ -12,9 +12,13 @@ const Navbar = () => {
       <li>
         <NavLink to="/all-books"> All Books</NavLink>
       </li>
-       
+       {
+        user && <li>
+        <NavLink to="lbdashboard/add-books">Librarian</NavLink>
+      </li>
+       }
         </>
-          const {user, logOut}=useContext(AuthContext)
+          
         
           const handleLogOut=()=>
           {

@@ -1,14 +1,11 @@
-import React from "react";
-import { Link, NavLink, Outlet } from "react-router";
-import { MdOutlineLibraryBooks } from "react-icons/md";
-import { FaClipboardList, FaUser } from "react-icons/fa6";
-import { LuReceiptIndianRupee } from "react-icons/lu";
+import React from 'react';
+import { FaBook, FaBoxOpen } from 'react-icons/fa';
+import { MdOutlineLibraryBooks } from 'react-icons/md';
+import { Link, NavLink, Outlet } from 'react-router';
 
-const DashBoardLayout = () => {
-  
-
-  return (
-     <div className="drawer lg:drawer-open">
+const LaybariyanDashBoard = () => {
+    return (
+      <div className="drawer lg:drawer-open">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Navbar */}
@@ -77,37 +74,34 @@ const DashBoardLayout = () => {
             </li>
 
             <li>
-              
               <NavLink
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="My-Orders"
-                to='/dashBoard/my-orders'
+                data-tip="add-books"
+                to='/lbdashBoard/add-books'
               >
-                  <FaClipboardList className="text-lg" />
-
-                <span className="is-drawer-close:hidden">My-Orders</span>
+                <MdOutlineLibraryBooks />
+                <span className="is-drawer-close:hidden">Add-Books</span>
                 
               </NavLink>
               <NavLink
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="My-Profile"
-                to='/dashBoard/my-profile'
+                data-tip="my-books"
+                to='/lbdashBoard/my-books'
               >
-                  <FaUser />
-
-                <span className="is-drawer-close:hidden">My-Profile</span>
+                <FaBook className="text-xl text-primary" />
+                <span className="is-drawer-close:hidden">My-Books</span>
                 
               </NavLink>
               <NavLink
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Invoices"
-                to='/dashBoard/invoices'
+                data-tip="orders"
+                to='/lbdashBoard/orders'
               >
-                 <LuReceiptIndianRupee />
-
-                <span className="is-drawer-close:hidden">Invoices</span>
+                <FaBoxOpen />
+                <span className="is-drawer-close:hidden">orders</span>
                 
               </NavLink>
+                
              
             </li>
 
@@ -141,7 +135,7 @@ const DashBoardLayout = () => {
         </div>
       </div>
     </div>
-  );
+    );
 };
 
-export default DashBoardLayout;
+export default LaybariyanDashBoard;

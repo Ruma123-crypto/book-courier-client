@@ -1,100 +1,99 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
 
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Context/AuthContext";
-import useaxiosSecure from "../../../hooks/useAxiosSecure";
 
 const MyProfile = () => {
-  const { user } = useContext(AuthContext);
-  const axiosSecure = useaxiosSecure();
+  const { user, updateUserProfile, setUser } = useContext(AuthContext);
+  const { register, handleSubmit ,reset} = useForm();
 
-  const [name, setName] = useState("");
-  const [photoURL, setPhotoURL] = useState("");
-  const [loading, setLoading] = useState(true);
-
-  // 🔹 Load user from MongoDB
-  useEffect(() => {
-    axiosSecure.get(`/users/${user.email}`).then((res) => {
-      setName(res.data?.name || user.displayName || "");
-      setPhotoURL(res.data?.photoURL || user.photoURL || "");
-      setLoading(false);
-    });
-  }, [user.email]);
-
-  // 🔹 Update profile
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-
-    const updatedUser = {
-      name,
-      photoURL,
+  const onSubmit = (data) => {
+    const profile = {
+      displayName: data.name,
+      photoURL: data.photo,
     };
 
-    try {
-      const res = await axiosSecure.patch(
-        `/users/${user.email}`,
-        updatedUser
-      );
-
-      if (res.data.modifiedCount > 0) {
-        Swal.fire("Success", "Profile updated successfully", "success");
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    updateUserProfile(profile)
+      .then(() => {
+       
+        setUser({
+          ...user,
+          displayName: data.name,
+          photoURL: data.photo,
+        });
+        reset(); 
+        Swal.fire({
+          icon: "success",
+          title: "Profile Updated Successfully!",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
-  if (loading) {
-    return <p className="text-center mt-10">Loading...</p>;
-  }
+ return (
+ <div className="max-w-xl mx-auto my-12 p-8 bg-gradient-to-br from-white to-gray-100 rounded-2xl shadow-lg border">
 
-  return (
-    <div className="max-w-xl mx-auto p-6">
-      <h2 className="text-2xl font-bold mb-6">My Profile</h2>
+    {/* Title */}
+    <h2 className="text-2xl font-semibold text-center mb-8 text-gray-800">
+      My Profile
+    </h2>
 
-      {/* Profile Info */}
-      <div className="flex items-center gap-4 mb-6">
+    {/* Profile Info */}
+    <div className="flex flex-col items-center mb-8">
+      <div className="relative">
         <img
-          src={photoURL || "https://i.ibb.co/placeholder.png"}
+          src={user?.photoURL || "https://i.ibb.co/4pDNDk1/avatar.png"}
           alt="profile"
-          className="w-16 h-16 rounded-full"
+          className="w-24 h-24 rounded-full border-4 border-primary shadow-md object-cover"
         />
-        <div>
-          <h3 className="text-lg font-semibold">{name}</h3>
-          <p className="text-gray-500">{user.email}</p>
-        </div>
       </div>
 
-      {/* Update Form */}
-      <form onSubmit={handleUpdate} className="space-y-4">
-        <div>
-          <label className="text-sm font-medium">Name</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="input input-bordered w-full mt-1"
-            placeholder="Enter your name"
-          />
-        </div>
+      <h3 className="text-lg font-semibold mt-4 text-gray-800">
+        {user?.displayName || "No Name"}
+      </h3>
 
-        <div>
-          <label className="text-sm font-medium">Photo URL</label>
-          <input
-            type="text"
-            value={photoURL}
-            onChange={(e) => setPhotoURL(e.target.value)}
-            className="input input-bordered w-full mt-1"
-            placeholder="Enter photo URL"
-          />
-        </div>
-
-        <button className="btn btn-primary w-full">
-          Update Profile
-        </button>
-      </form>
+      <p className="text-sm text-gray-500">{user?.email}</p>
     </div>
-  );
+
+    {/* Form */}
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+
+      <div>
+        <label className="text-sm font-medium text-gray-600">
+          Update Name
+        </label>
+        <input
+          defaultValue={user?.displayName}
+          {...register("name")}
+          className="input input-bordered w-full mt-1 focus:outline-none focus:ring-2 focus:ring-primary"
+          placeholder="Enter your name"
+        />
+      </div>
+
+      <div>
+        <label className="text-sm font-medium text-gray-600">
+          Update Photo URL
+        </label>
+        <input
+          defaultValue={user?.photoURL}
+          {...register("photo")}
+          className="input input-bordered w-full mt-1 focus:outline-none focus:ring-2 focus:ring-primary"
+          placeholder="Enter photo URL"
+        />
+      </div>
+
+      <button className="btn btn-primary w-full rounded-lg text-white">
+        Update Profile
+      </button>
+    </form>
+
+  </div>
+);
 };
 
 export default MyProfile;
