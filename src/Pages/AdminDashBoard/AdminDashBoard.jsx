@@ -94,11 +94,11 @@ const AdminDashBoard = () => {
                   </NavLink>
                    <NavLink
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="Manage-Users"
+                    data-tip="Manage-Books"
                     to="/admindashBoard/manage-users"
                   >
                     <FaUserFriends />
-                    <span className="is-drawer-close:hidden">Manage-Users</span>
+                    <span className="is-drawer-close:hidden">Manage-Books</span>
                   </NavLink>
                 
                 </>

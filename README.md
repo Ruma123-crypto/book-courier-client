@@ -1,16 +1,38 @@
-# React + Vite
+📚 BookCourier – Library-to-Home Delivery System
+🚀 Live URL
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+https://your-live-link.com
 
-Currently, two official plugins are available:
+📌 Project Purpose
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+BookCourier is a library delivery system where users can order books from nearby libraries and get them delivered to their home. It removes the need to physically visit the library and makes borrowing books easier for students and readers.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+✨ Key Features
+User authentication (Email/Password + Google login)
+Browse all books with search & sort functionality
+Book details page with order option
+Order system with status (pending, shipped, delivered)
+Cancel order & payment system
+User dashboard (orders, profile, invoices)
+Librarian dashboard (add/manage books, manage orders)
+Admin dashboard (manage users & books)
+Wishlist system
+Review & rating system
+Responsive design (mobile, tablet, desktop)
+Dark/Light mode toggle
+📦 NPM Packages Used
+Client
+react
+react-router-dom
+axios
+react-hook-form
+sweetalert2
+tailwindcss
+Server
+express
+cors
+dotenv
+mongodb
+jsonwebtoken
+stripe
+firebase-admin
