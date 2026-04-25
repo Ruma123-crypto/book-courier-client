@@ -16,7 +16,7 @@ const FlyToDistrict = ({ position }) => {
 const CovarageArea = () => {
   const position = [23.8103, 90.4125];
   const data = useLoaderData();
-  console.log(data)
+  
     const mapRef = useRef(null);
 
   return (
