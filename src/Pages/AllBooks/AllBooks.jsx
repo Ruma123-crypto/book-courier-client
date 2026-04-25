@@ -67,7 +67,7 @@ const AllBooks = () => {
           ))
         ) : (
           <p className="text-center col-span-full text-gray-500">
-            No books found 😢
+            No books found 
           </p>
         )}
       </div>
