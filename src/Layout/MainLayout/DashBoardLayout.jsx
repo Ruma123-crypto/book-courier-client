@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router";
 import { MdOutlineLibraryBooks } from "react-icons/md";
-import { FaClipboardList, FaUser } from "react-icons/fa6";
+import { FaClipboardList, FaHeart, FaRegHeart, FaUser } from "react-icons/fa6";
 import { LuReceiptIndianRupee } from "react-icons/lu";
 
 const DashBoardLayout = () => {
@@ -106,6 +106,17 @@ const DashBoardLayout = () => {
                  <LuReceiptIndianRupee />
 
                 <span className="is-drawer-close:hidden">Invoices</span>
+                
+              </NavLink>
+              <NavLink
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="my-wishlisht"
+                to='/dashBoard/my-wishlisht'
+              >
+                   <FaHeart className="text-red-500 text-xl" />
+
+
+                <span className="is-drawer-close:hidden">My WishLisht</span>
                 
               </NavLink>
              

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import useaxiosSecure from "../../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
 const EditBook = () => {
   const { id } = useParams();
-  const axiosSecure = useaxiosSecure();
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
 
   const [book, setBook] = useState({
@@ -48,7 +48,6 @@ const EditBook = () => {
       <h2 className="text-3xl font-bold mb-5">Edit Book</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-
         <input
           type="text"
           name="title"
@@ -76,9 +75,7 @@ const EditBook = () => {
           placeholder="Price"
         />
 
-        <button className="btn btn-primary w-full">
-          Update Book
-        </button>
+        <button className="btn btn-primary w-full">Update Book</button>
       </form>
     </div>
   );

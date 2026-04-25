@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import useaxiosSecure from "../../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { AuthContext } from "../../../Context/AuthContext";
 import Swal from "sweetalert2";
 
 const Orders = () => {
-  const axiosSecure = useaxiosSecure();
+  const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
   const queryClient = useQueryClient();
 
@@ -15,7 +15,7 @@ const Orders = () => {
     enabled: !!user?.email,
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `/librarian-orders?email=${user?.email}`
+        `/librarian-orders?email=${user?.email}`,
       );
       return res.data;
     },
@@ -74,7 +74,6 @@ const Orders = () => {
   return (
     <div className="overflow-x-auto m-5">
       <table className="min-w-full bg-white border rounded-lg shadow-md">
-
         {/* HEADER */}
         <thead className="bg-gray-100 text-gray-700 text-sm uppercase">
           <tr>
@@ -90,16 +89,11 @@ const Orders = () => {
         <tbody className="divide-y divide-gray-100">
           {orders.map((order) => (
             <tr key={order._id} className="hover:bg-gray-50">
-
               {/* BOOK */}
-              <td className="px-6 py-4 font-medium">
-                {order.bookTitle}
-              </td>
+              <td className="px-6 py-4 font-medium">{order.bookTitle}</td>
 
               {/* USER */}
-              <td className="px-6 py-4 text-gray-600">
-                {order.userName}
-              </td>
+              <td className="px-6 py-4 text-gray-600">{order.userName}</td>
 
               {/* STATUS */}
               <td className="px-6 py-4 text-center">
@@ -108,10 +102,10 @@ const Orders = () => {
                     order.status === "pending"
                       ? "bg-yellow-100 text-yellow-700"
                       : order.status === "shipped"
-                      ? "bg-blue-100 text-blue-700"
-                      : order.status === "cancelled"
-                      ? "bg-gray-200 text-gray-700"
-                      : "bg-green-100 text-green-700"
+                        ? "bg-blue-100 text-blue-700"
+                        : order.status === "cancelled"
+                          ? "bg-gray-200 text-gray-700"
+                          : "bg-green-100 text-green-700"
                   }`}
                 >
                   {order.status}
@@ -150,7 +144,6 @@ const Orders = () => {
                   {order.status === "cancelled" ? "Cancelled" : "Cancel"}
                 </button>
               </td>
-
             </tr>
           ))}
         </tbody>

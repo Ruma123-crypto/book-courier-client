@@ -1,14 +1,11 @@
 import React, { useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
-import useaxiosSecure from "../../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { AuthContext } from "../../../Context/AuthContext";
 
-
-
-
 const Invoices = () => {
-  const axiosSecure = useaxiosSecure();
-const {user}=useContext(AuthContext)
+  const axiosSecure = useAxiosSecure();
+  const { user } = useContext(AuthContext);
 
   const { data: payments = [] } = useQuery({
     queryKey: ["payments", user?.email],

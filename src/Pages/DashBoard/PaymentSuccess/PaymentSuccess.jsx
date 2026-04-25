@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router";
-import useaxiosSecure from "../../../hooks/useAxiosSecure";
-
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const PaymentSuccess = () => {
   const [params] = useSearchParams();
-  const axiosSecure = useaxiosSecure();
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     const orderId = params.get("orderId");

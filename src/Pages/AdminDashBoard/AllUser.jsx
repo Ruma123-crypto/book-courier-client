@@ -1,10 +1,10 @@
 import React from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-import useaxiosSecure from "../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const AllUsers = () => {
-  const axiosSecure = useaxiosSecure();
+  const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
 
   // 1. Fetch users
@@ -74,8 +74,8 @@ const AllUsers = () => {
                       user.role === "admin"
                         ? "bg-red-500"
                         : user.role === "librarian"
-                        ? "bg-blue-500"
-                        : "bg-gray-500"
+                          ? "bg-blue-500"
+                          : "bg-gray-500"
                     }`}
                   >
                     {user.role || "user"}

@@ -4,12 +4,13 @@ import { MdOutlineLibraryBooks } from "react-icons/md";
 import { FaClipboardList, FaUser, FaUsers } from "react-icons/fa6";
 import { LuReceiptIndianRupee } from "react-icons/lu";
 import { FaUserCircle, FaUserFriends } from "react-icons/fa";
+import useRole from "../../hooks/useRole";
 
 const AdminDashBoard = () => {
+  const { role } = useRole();
   
-
   return (
-     <div className="drawer lg:drawer-open">
+    <div className="drawer lg:drawer-open">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Navbar */}
@@ -79,46 +80,42 @@ const AdminDashBoard = () => {
             </li>
 
             <li>
-              
-              <NavLink
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Manage-Users"
-                to='/admindashBoard/manage-users'
-              >
-               
-                 <FaUserFriends />
-                <span className="is-drawer-close:hidden">Manage-Users</span>
-                
-              </NavLink>
-              <NavLink
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="All-Users"
-                to='/admindashBoard/all-users'
-              >
-                 <FaUsers /> 
-               
+              {role === "admin" && (
+                <>
+                  
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="All-Users"
+                    to="/admindashBoard/all-users"
+                  >
+                    <FaUsers />
 
-                <span className="is-drawer-close:hidden">All-Users</span>
+                    <span className="is-drawer-close:hidden">All-Users</span>
+                  </NavLink>
+                   <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Manage-Users"
+                    to="/admindashBoard/manage-users"
+                  >
+                    <FaUserFriends />
+                    <span className="is-drawer-close:hidden">Manage-Users</span>
+                  </NavLink>
                 
-              </NavLink>
+                </>
+              )}
              
-              <NavLink
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="admin-profile"
-                to='/admindashBoard/admin-profile'
-              >
-                 <FaUserCircle className="text-xl" />
-               
-
-                <span className="is-drawer-close:hidden">Admin-profile</span>
-                
-              </NavLink>
-             
-              
-             
+                <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="admin-profile"
+                    to="/admindashBoard/admin-profile"
+                  >
+                    <FaUserCircle className="text-xl" />
+                    <span className="is-drawer-close:hidden">
+                      Admin-profile
+                    </span>
+                  </NavLink>
             </li>
 
-           
             {/* List item */}
             <li>
               <button
@@ -151,4 +148,4 @@ const AdminDashBoard = () => {
   );
 };
 
-export default AdminDashBoard ;
+export default AdminDashBoard;

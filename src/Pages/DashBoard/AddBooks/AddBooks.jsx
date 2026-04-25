@@ -3,11 +3,11 @@ import { useForm } from "react-hook-form";
 
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Context/AuthContext";
-import useaxiosSecure from "../../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AddBooks = () => {
   const { register, handleSubmit, reset } = useForm();
-  const axiosSecure = useaxiosSecure();
+  const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
 
   const onSubmit = (data) => {

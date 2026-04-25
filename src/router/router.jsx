@@ -24,6 +24,9 @@ import AdminDashBoard from "../Pages/AdminDashBoard/AdminDashBoard";
 import AllUsers from "../Pages/AdminDashBoard/AllUser";
 import ManageUser from "../Pages/AdminDashBoard/ManageUser";
 import AdminProfile from "../Pages/AdminDashBoard/AdminProfile";
+import LaybariyanRoute from "./LaybariyanRoute";
+import MyWishList from "../Pages/DashBoard/WishLisht/MyWishList";
+
 
 export const router = createBrowserRouter([
   {
@@ -85,6 +88,10 @@ element:<PaymentCancel></PaymentCancel>
 {
   path:'invoices',
   Component:Invoices
+},
+{
+  path:'my-wishlisht',
+  element:<MyWishList></MyWishList>
 }
   ]
    

@@ -8,12 +8,14 @@ const axiosSecure = axios.create({
   baseURL: "http://localhost:3000",
 });
 
-const useaxiosSecure = () => {
+const useAxiosSecure = () => {
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     // intercept request
+    console.log(user?.accessToken)
+    
     const reqInterceptor = axiosSecure.interceptors.request.use(
       (config) => {
         if (user?.accessToken) {
@@ -21,10 +23,9 @@ const useaxiosSecure = () => {
         }
         return config;
       },
-      (error) => Promise.reject(error)
+      (error) => Promise.reject(error),
     );
 
-    
     const resInterceptor = axiosSecure.interceptors.response.use(
       (res) => res,
       async (error) => {
@@ -36,7 +37,7 @@ const useaxiosSecure = () => {
         }
 
         return Promise.reject(error);
-      }
+      },
     );
 
     return () => {
@@ -48,4 +49,4 @@ const useaxiosSecure = () => {
   return axiosSecure;
 };
 
-export default useaxiosSecure;
+export default useAxiosSecure;

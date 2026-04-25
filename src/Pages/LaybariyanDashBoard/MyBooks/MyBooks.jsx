@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import useaxiosSecure from "../../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { AuthContext } from "../../../Context/AuthContext";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
 const MyBooks = () => {
-  const axiosSecure = useaxiosSecure();
+  const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
@@ -19,25 +19,29 @@ const MyBooks = () => {
     },
   });
 
- const handleUnpublish = (id) => {
-  Swal.fire({
-    title: "Are you sure?",
-    text: "You want to unpublish this book!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#d33",
-    cancelButtonColor: "#3085d6",
-    confirmButtonText: "Yes, unpublish it!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      axiosSecure.patch(`/books/unpublish/${id}`).then(() => {
-        queryClient.invalidateQueries(["my-books", user.email]);
+  const handleUnpublish = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to unpublish this book!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, unpublish it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.patch(`/books/unpublish/${id}`).then(() => {
+          queryClient.invalidateQueries(["my-books", user.email]);
 
-        Swal.fire("Unpublished!", "Your book has been unpublished.", "success");
-      });
-    }
-  });
-};
+          Swal.fire(
+            "Unpublished!",
+            "Your book has been unpublished.",
+            "success",
+          );
+        });
+      }
+    });
+  };
   return (
     <div className="p-6">
       <h2 className="text-2xl font-bold mb-4">My Books</h2>
